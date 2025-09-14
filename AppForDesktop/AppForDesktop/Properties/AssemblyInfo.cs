@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("ProjectApp")]
+[assembly: AssemblyTitle("AppForDesktop")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ProjectApp")]
+[assembly: AssemblyProduct("AppForDesktop")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("a8d12e94-c261-4425-8b01-b69559ec50a4")]
+[assembly: Guid("88d65ef1-614b-46dd-b582-c1495ea328da")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
