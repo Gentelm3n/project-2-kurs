@@ -10,43 +10,84 @@ using System.Windows.Forms;
 
 namespace AppForDesktop
 {
-    public partial class Form1 : Form
+    public partial class mainForm : Form
     {
-        public Form1()
+        public mainForm()
         {
             InitializeComponent();
-            monthCalendar1.Visible = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = "Hello Debils!";
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void show_and_hidden_Calendar(object sender, EventArgs e)
-        {
-            monthCalendar1.Visible = !monthCalendar1.Visible;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void submit_button(object sender, EventArgs e)
-        {
-            string subject = textBox1.Text;
-            label2.Text = subject;
+            profCombo.Items.AddRange(new object[] { "Vakulov", "Kaplitskiy", "Gubskiy" });
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            string weekday = date.Value.DayOfWeek.ToString();
 
+            switch (weekday)
+            {
+                case "Monday": Mon.Checked = true; break;
+                case "Tuesday": Tue.Checked = true; break;
+                case "Wednesday": Wed.Checked = true; break;
+                case "Thursday": Thu.Checked = true; break;
+                case "Friday": Fri.Checked = true; break;
+                case "Saturday": Sat.Checked = true; break;
+                case "Sunday": Sun.Checked = true; break;
+            }
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changeDate(int i)
+        {
+            int weekday = (int) date.Value.DayOfWeek;
+
+            if(weekday != 0)
+            {
+                weekday--;
+            }
+            else
+            {
+                weekday = 6;
+            }
+            DateTime realDate = date.Value.AddDays(-weekday+i);
+            date.Value = realDate;
+        }
+
+        private void Mon_Click(object sender, EventArgs e)
+        {
+            changeDate(0);
+        }
+
+        private void Tue_Click(object sender, EventArgs e)
+        {
+            changeDate(1);
+        }
+
+        private void Wed_Click(object sender, EventArgs e)
+        {
+            changeDate(2);
+        }
+
+        private void Thu_Click(object sender, EventArgs e)
+        {
+            changeDate(3);
+        }
+
+        private void Fri_Click(object sender, EventArgs e)
+        {
+            changeDate(4);
+        }
+
+        private void Sat_Click(object sender, EventArgs e)
+        {
+            changeDate(5);
+        }
+
+        private void Sun_Click(object sender, EventArgs e)
+        {
+            changeDate(6);
         }
     }
 }
