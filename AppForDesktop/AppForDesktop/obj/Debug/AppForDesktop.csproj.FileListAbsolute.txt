@@ -9,3 +9,14 @@ C:\Users\gentelmeenFrUK\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesk
 C:\Users\gentelmeenFrUK\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.pdb
 C:\Users\gentelmeenFrUK\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.exe.config
 C:\Users\gentelmeenFrUK\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.mainForm.resources
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\bin\Debug\AppForDesktop.exe.config
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\bin\Debug\AppForDesktop.exe
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\bin\Debug\AppForDesktop.pdb
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.csproj.AssemblyReference.cache
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.exe.config
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.mainForm.resources
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.Properties.Resources.resources
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.csproj.GenerateResource.cache
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.exe
+\\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.pdb
