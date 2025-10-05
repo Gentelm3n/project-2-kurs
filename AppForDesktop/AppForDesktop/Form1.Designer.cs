@@ -1207,6 +1207,7 @@
             this.textBoxDisc.Name = "textBoxDisc";
             this.textBoxDisc.Size = new System.Drawing.Size(287, 31);
             this.textBoxDisc.TabIndex = 137;
+            this.textBoxDisc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubjectComboChanged);
             // 
             // textBoxAud
             // 
@@ -1214,6 +1215,7 @@
             this.textBoxAud.Name = "textBoxAud";
             this.textBoxAud.Size = new System.Drawing.Size(287, 31);
             this.textBoxAud.TabIndex = 139;
+            this.textBoxAud.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AudComboChanged);
             // 
             // textBoxProf
             // 
@@ -1221,6 +1223,7 @@
             this.textBoxProf.Name = "textBoxProf";
             this.textBoxProf.Size = new System.Drawing.Size(287, 31);
             this.textBoxProf.TabIndex = 140;
+            this.textBoxProf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TeachComboChanged);
             // 
             // labelGroup
             // 
@@ -1238,6 +1241,7 @@
             this.textBoxGroup.Name = "textBoxGroup";
             this.textBoxGroup.Size = new System.Drawing.Size(169, 31);
             this.textBoxGroup.TabIndex = 142;
+            this.textBoxGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GroupComboChanged);
             // 
             // mainForm
             // 

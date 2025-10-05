@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AppForDesktop
 {
@@ -17,6 +18,11 @@ namespace AppForDesktop
         DateTime firstDateUpWeek = new DateTime(2025, 9, 1);
         string[,,] arrMain;
         Label[,] arrLabel;
+        List<string> teach;
+        List<string> group;
+        List<string> disc;
+        List<string> aud;
+
 
         public mainForm()
         {
@@ -30,13 +36,9 @@ namespace AppForDesktop
             else {
                 upDownWeek.Text = "Вы на нижней неделе";
             }
-            List<string> group = new List<string>();
             group = GetListGroup().Result;
-            List<string> teach = new List<string>();
             teach = GetListTeach().Result;
-            List<string> disc = new List<string>();
             disc = GetListDisc().Result;
-            List<string> aud = new List<string>();
             aud = GetListAud().Result;
             arrMain = new string[7, 14, 4];
             arrLabel = new Label[,] { { labelDisc11, labelProf11, labelAud11, labelCorp11 }, { labelDisc12, labelProf12, labelAud12, labelCorp12 },
@@ -105,6 +107,25 @@ namespace AppForDesktop
             //}
             return biglistbygroup;
         }
+        private void GroupComboChanged(object sender, EventArgs e)
+        {
+            string filterGroup = textBoxGroup.Text.ToLower();
+
+            // Фильтруем элементы
+            var filteredItems = group
+                .Where(item => item.ToLower().Contains(filterGroup))
+                .ToArray();
+
+            // Обновляем ComboBox
+            groupCombo.Items.Clear();
+            groupCombo.Items.AddRange(filteredItems);
+
+            // Показываем выпадающий список если есть результаты
+            if (filteredItems.Length > 0 && !string.IsNullOrEmpty(filterGroup))
+            {
+                groupCombo.DroppedDown = true;
+            }
+        }
 
 
 
@@ -129,6 +150,26 @@ namespace AppForDesktop
             //    Console.WriteLine($"Ошибка: {ex.Message}");
             //}
             return teach;
+        }
+
+        private void TeachComboChanged(object sender, EventArgs e)
+        {
+            string filterTeach = textBoxProf.Text.ToLower();
+
+            // Фильтруем элементы
+            var filteredItems = teach
+                .Where(item => item.ToLower().Contains(filterTeach))
+                .ToArray();
+
+            // Обновляем ComboBox
+            profCombo.Items.Clear();
+            profCombo.Items.AddRange(filteredItems);
+
+            // Показываем выпадающий список если есть результаты
+            if (filteredItems.Length > 0 && !string.IsNullOrEmpty(filterTeach))
+            {
+                profCombo.DroppedDown = true;
+            }
         }
 
 
@@ -158,7 +199,22 @@ namespace AppForDesktop
 
         private void SubjectComboChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("huiiii");
+            string filterDisc = textBoxDisc.Text.ToLower();
+
+            // Фильтруем элементы
+            var filteredItems = disc
+                .Where(item => item.ToLower().Contains(filterDisc))
+                .ToArray();
+
+            // Обновляем ComboBox
+            subjectCombo.Items.Clear();
+            subjectCombo.Items.AddRange(filteredItems);
+
+            // Показываем выпадающий список если есть результаты
+            if (filteredItems.Length > 0 && !string.IsNullOrEmpty(filterDisc))
+            {
+                subjectCombo.DroppedDown = true;
+            }
         }
 
 
@@ -184,6 +240,26 @@ namespace AppForDesktop
             //    Console.WriteLine($"Ошибка: {ex.Message}");
             //}
             return aud;
+        }
+
+        private void AudComboChanged(object sender, EventArgs e)
+        {
+            string filterAud = textBoxAud.Text.ToLower();
+
+            // Фильтруем элементы
+            var filteredItems = aud
+                .Where(item => item.ToLower().Contains(filterAud))
+                .ToArray();
+
+            // Обновляем ComboBox
+            audCombo.Items.Clear();
+            audCombo.Items.AddRange(filteredItems);
+
+            // Показываем выпадающий список если есть результаты
+            if (filteredItems.Length > 0 && !string.IsNullOrEmpty(filterAud))
+            {
+                audCombo.DroppedDown = true;
+            }
         }
 
 
