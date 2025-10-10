@@ -331,6 +331,11 @@ namespace AppForDesktop
             changeDate(6);
         }
 
+        private void save()
+        {
+            Console.WriteLine("SAVE THIS FUCKIN SHIT");
+        }
+
         private void setLabel(int n, Label[,] arrLabel, string[,,] arrMain)
         {
             for(int i = 0; i < 14; i++)
