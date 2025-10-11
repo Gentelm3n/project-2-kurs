@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            
-
             this.date = new System.Windows.Forms.DateTimePicker();
             this.Mon = new System.Windows.Forms.RadioButton();
             this.Tue = new System.Windows.Forms.RadioButton();
@@ -140,6 +138,7 @@
             this.textBoxProf = new System.Windows.Forms.TextBox();
             this.labelGroup = new System.Windows.Forms.Label();
             this.textBoxGroup = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupWeekDay.SuspendLayout();
             this.groupTimeHour.SuspendLayout();
             this.groupTimeFullCouple.SuspendLayout();
@@ -147,7 +146,7 @@
             // 
             // date
             // 
-            this.date.Location = new System.Drawing.Point(778, 65);
+            this.date.Location = new System.Drawing.Point(778, 77);
             this.date.Margin = new System.Windows.Forms.Padding(6);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(426, 31);
@@ -682,7 +681,7 @@
             // upDownWeek
             // 
             this.upDownWeek.AutoSize = true;
-            this.upDownWeek.Location = new System.Drawing.Point(773, 23);
+            this.upDownWeek.Location = new System.Drawing.Point(773, 46);
             this.upDownWeek.Name = "upDownWeek";
             this.upDownWeek.Size = new System.Drawing.Size(237, 25);
             this.upDownWeek.TabIndex = 79;
@@ -1243,11 +1242,21 @@
             this.textBoxGroup.TabIndex = 142;
             this.textBoxGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GroupComboChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(773, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 25);
+            this.label1.TabIndex = 143;
+            this.label1.Text = "label1";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2070, 1435);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxGroup);
             this.Controls.Add(this.labelGroup);
             this.Controls.Add(this.textBoxProf);
@@ -1332,7 +1341,7 @@
             this.Controls.Add(this.groupTimeFullCouple);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "mainForm";
-            this.Text = "Form1";
+            this.Text = "InputForm";
             this.groupWeekDay.ResumeLayout(false);
             this.groupWeekDay.PerformLayout();
             this.groupTimeHour.ResumeLayout(false);
@@ -1469,6 +1478,7 @@
         private System.Windows.Forms.TextBox textBoxProf;
         private System.Windows.Forms.Label labelGroup;
         private System.Windows.Forms.TextBox textBoxGroup;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -34,3 +34,4 @@ C:\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debu
 C:\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.exe
 C:\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.pdb
 >>>>>>> Stashed changes
+C:\Mac\Home\Documents\GitHub\project-2-kurs\AppForDesktop\AppForDesktop\obj\Debug\AppForDesktop.AuthForm.resources

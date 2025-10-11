@@ -24,10 +24,10 @@ namespace AppForDesktop
         List<string> aud;
 
 
-        public mainForm()
+        public mainForm(string corp)
         {
             InitializeComponent();
-
+            label1.Text = corp;
 
             if (((int) (date.Value - firstDateUpWeek).TotalDays) / 7 % 2 == 0)
             {
@@ -346,5 +346,6 @@ namespace AppForDesktop
                 }
             }
         }
+
     }
 }
