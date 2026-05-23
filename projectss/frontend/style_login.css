@@ -1,0 +1,118 @@
+/* Общие */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 20% 20%, #eaf0ff, #f7f9fc 45%, #eef3ff 80%);
+    color: #111827;
+}
+
+/* Контейнер */
+.login-container {
+    width: min(420px, 92vw);
+    padding: 32px 28px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.12);
+}
+
+/* Заголовок */
+.logo h1 {
+    margin: 0 0 4px;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1f2937;
+}
+.logo p {
+    margin: 0 0 20px;
+    color: #4b5563;
+}
+
+/* Формы */
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #1f2937;
+}
+.select-wrapper,
+.input-wrapper {
+    position: relative;
+}
+select,
+input[type="password"] {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+select:focus,
+input[type="password"]:focus {
+    border-color: #4a73f0;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(74, 115, 240, 0.18);
+}
+.error-message {
+    display: none;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #d14343;
+}
+
+/* Кнопка */
+.submit-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4a73f0, #6a8df7);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.06s ease, box-shadow 0.18s ease;
+}
+.submit-btn:hover {
+    box-shadow: 0 12px 30px rgba(74, 115, 240, 0.35);
+}
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Футер */
+.footer-links {
+    margin-top: 16px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+.footer-links a {
+    color: #4a73f0;
+    text-decoration: none;
+    font-weight: 600;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+.footer-links .divider {
+    margin: 0 8px;
+    color: #9ca3af;
+}
+
+/* Статус */
+#status {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #374151;
+}

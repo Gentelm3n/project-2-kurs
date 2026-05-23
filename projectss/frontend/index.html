@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style_login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    .login-container{
+        display: grid;
+        place-items: center;
+    }
+</style>
+<body>
+<div class="login-container">
+    <div class="logo">
+        <h1>Университет</h1>
+        <p>Система доступа к расписанию</p>
+    </div>
+
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="instituteSelect">
+                Выберите институт
+            </label>
+            <div class="select-wrapper">
+                <select id="instituteSelect" required>
+                    <option value="" disabled selected>-- Выберите институт --</option>
+                    <option value="it">Институт информационных технологий (ИТ)</option>
+                    <option value="economics">Институт экономики и управления</option>
+                </select>
+            </div>
+            <div class="error-message" id="instituteError">
+                Пожалуйста, выберите институт
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordInput">
+                Введите пароль
+            </label>
+            <div class="input-wrapper">
+                <input type="password" id="passwordInput"
+                       placeholder="Введите ваш пароль"
+                       required
+                       minlength="6"
+                       maxlength="20">
+            </div>
+        </div>
+
+        <button id="submit" class="submit-btn">
+            Войти в систему
+        </button>
+    </form>
+
+    <div class="footer-links">
+        <a href="#" onclick="showForgotPassword()">Забыли пароль?</a>
+        <span class="divider">•</span>
+        <a href="#" onclick="showHelp()">Помощь</a>
+        <span class="divider">•</span>
+        <a href="#" onclick="contactSupport()">Техподдержка</a>
+    </div>
+
+    <p id="status">dasgfdfg</p>
+</div>
+</body>
+<script>
+
+    document.getElementById("submit").addEventListener("click", function() {
+        const inst = document.getElementById("instituteSelect").value;
+        const pass = document.getElementById("passwordInput").value;
+        const statusElement = document.getElementById("status");
+        const formData = new FormData();
+        formData.append("inst", inst);
+        formData.append("pass", pass);
+
+        const response = fetch("http://localhost:5000/auth", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    statusElement.textContent = ""
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                statusElement.textContent = data.message;
+            })
+            .catch(error => {
+                statusElement.textContent = statusElement.textContent + "Error uploading image: " + error;
+            });
+
+        const data = JSON.parse(response.json());
+
+        window.electronAPI.navigateTo('main');
+        document.close();
+
+    });
+
+
+
+</script>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style_main.css">
+    <title>Расписание</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<table border="1" cellpadding="5" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="5">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div style="min-width: 250px;">
+                    <strong>Группа:</strong>
+                    <select id="group" >
+                        <option selected>Выберите группу</option>
+                        <option value="24VT-09.03.03.01-o2">24VT-09.03.03.01-o2</option>
+                        <option value="24VT-09.03.03.01-o3">24VT-09.03.03.01-o3</option>
+                    </select>
+                </div>
+
+                <div class="week-days-container">
+                    <p>Пн <label id="mond">2</label> <input type="radio" id="mon" name="weekDay" value="mon" /></p>
+                    <p>Вт <label id="tued">3</label> <input type="radio" id="tue" name="weekDay" value="tue" /></p>
+                    <p>Ср <label id="wedd">4</label> <input type="radio" id="wed" name="weekDay" value="wed" /></p>
+                    <p>Чт <label id="thud">5</label> <input type="radio" id="thu" name="weekDay" value="thu" /></p>
+                    <p>Пт <label id="frid">6</label> <input type="radio" id="fri" name="weekDay" value="fri" /></p>
+                    <p>Сб <label id="satd">7</label> <input type="radio" id="sat" name="weekDay" value="sat" /></p>
+                    <p>Вс <label id="sund">8</label> <input type="radio" id="sun" name="weekDay" value="sun" /></p>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" valign="top">
+            <strong id="inst">ФВТ</strong>
+            <input type="date" id="date" min="02.09.2026"></input>
+            <p id="weekUpDowm">Вы на нижней неделе</p>
+        </td>
+        <td colspan="3">
+            <table border="0" width="100%" id="table">
+                <thead>
+                <td>Номер</td>
+                <td>Время</td>
+                <td>Дисциплина</td>
+                <td>Преподователь</td>
+                <td>Аудитория</td>
+                </thead>
+                <tr id="para10">
+                    <td rowspan="2"><strong>1 пара</strong></td>
+                    <td>8:00-8:45</td>
+                    <td id="plus1" colspan="3" rowspan="2" align="center"><button id="plusBut1">PLUS</button></td>
+                </tr>
+                <tr id="para11">
+                    <td>8:50-9:35</td>
+                    <td id="plus10"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>2 пара</strong></td>
+                    <td>9:50-10:35</td>
+                    <td id="plus2" colspan="3" rowspan="2" align="center"><button id="plusBut2">PLUS</button></td>
+                </tr>
+                <tr>
+                    <td>10:45-11:25</td>
+                    <td id="plus20"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>3 пара</strong></td>
+                    <td>11:55-12:40</td>
+                    <td id="plus3" colspan="3" rowspan="2" align="center"><button id="plusBut3">PLUS</button></td>
+                </tr>
+                <tr>
+                    <td>12:45-13:30</td>
+                    <td id="plus30"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>4 пара</strong></td>
+                    <td>13:45-14:30</td>
+                    <td id="plus4" colspan="3" rowspan="2" align="center"><button id="plusBut4">PLUS</button></td>
+                </tr>
+                <tr>
+                    <td>14:35-15:20</td>
+                    <td id="plus40"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>5 пара</strong></td>
+                    <td>15:50-16:35</td>
+                    <td id="plus5" colspan="3" rowspan="2" align="center"><button id="plusBut5">PLUS</button></td>
+                </tr>
+                <tr>
+                    <td>16:40-17:25</td>
+                    <td id="plus50"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>6 пара</strong></td>
+                    <td>17:40-18:25</td>
+                    <td id="plus6" colspan="3" rowspan="2" align="center"><button id="plusBut6">PLUS</button></td>
+                </tr>
+                <tr>
+                    <td>18:30-19:15</td>
+                    <td id="plus60"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><strong>7 пара</strong></td>
+                    <td>19:30-20:15</td>
+                    <td id="plus7" colspan="3" rowspan="2" align="center"><button id="plusBut7">PLUS</button></td>
+                </tr>
+                <tr>
+                    <td>20:20-21:05</td>
+                    <td id="plus70"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<button id="submit">SUBMIT</button>
+</body>
+<script defer>
+    document.getElementById("date").valueAsDate = new Date();
+    const mainDate = new Date("02.08.2026");
+    let weekDay = document.getElementById("date").valueAsDate.getDay();
+    let jsonData;
+    let week_type;
+    resetSchedule();
+
+    document.getElementById("group").addEventListener("change", function() {
+
+        // fetch tuda suda
+        jsonData = {"count":2,
+            "next":null,
+            "previous":null,
+            "results":[
+                {"id":1,
+                    "semester":2,
+                    "group":
+                        {"id":1,
+                            "name":"2.9",
+                            "course":2,
+                            "department":1,
+                            "department_name":"Прикладной информатики и инноватики",
+                            "faculty_name":"ФВТ"},
+                    "subject":{"id":1,
+                        "name":"Дискретная Математика",
+                        "short_name":"Дискретка",
+                        "department":1},
+                    "teacher":{"id":1,
+                        "last_name":"Ефимов",
+                        "first_name":"Анатолий",
+                        "middle_name":"Иванович",
+                        "department":1,
+                        "email":"",
+                        "phone":"",
+                        "full_name":"Ефимов Анатолий Иванович"},
+                    "classroom":{"id":1,
+                        "number":"514",
+                        "building":"ФВТ",
+                        "capacity":null,
+                        "room_type":"lecture",
+                        "display_name":"ФВТ, ауд. 514"},
+                    "time_slot":{"id":2,
+                        "slot_number":2,
+                        "start_time":"09:50:00",
+                        "end_time":"11:25:00"},
+                    "day_of_week":1,
+                    "day_name":"Понедельник",
+                    "lesson_type":"lecture",
+                    "lesson_type_display":"Лекция",
+                    "week_type":"odd",
+                    "week_type_display":"Верхняя",
+                    "is_active":true,
+                    "updated_at":"2026-02-23T18:26:28.837626+03:00"},
+                {"id":2,
+                    "semester":2,
+                    "group":{"id":1,
+                        "name":"2.9",
+                        "course":2,
+                        "department":1,
+                        "department_name":"Прикладной информатики и инноватики",
+                        "faculty_name":"ФВТ"},
+                    "subject":{"id":2,
+                        "name":"Хуйня",
+                        "short_name":"Да",
+                        "department":1},
+                    "teacher":{"id":1,
+                        "last_name":"Ефимов",
+                        "first_name":"Анатолий",
+                        "middle_name":"Иванович",
+                        "department":1,
+                        "email":"",
+                        "phone":"",
+                        "full_name":"Ефимов Анатолий Иванович"},
+                    "classroom":{"id":1,
+                        "number":"514",
+                        "building":"ФВТ",
+                        "capacity":null,
+                        "room_type":"lecture",
+                        "display_name":"ФВТ, ауд. 514"},
+                    "time_slot":{"id":3,
+                        "slot_number":3,
+                        "start_time":"11:55:00",
+                        "end_time":"13:30:00"},
+                    "day_of_week":1,
+                    "day_name":"Понедельник",
+                    "lesson_type":"lecture",
+                    "lesson_type_display":"Лекция",
+                    "week_type":"every",
+                    "week_type_display":"Каждую неделю",
+                    "is_active":true,
+                    "updated_at":"2026-03-29T14:43:39.103574+03:00"}
+            ]}
+
+        setDaySchedule();
+    })
+
+    document.getElementById("submit").addEventListener("click", function() {
+        resetSchedule();
+    })
+
+    function resetSchedule() {
+        document.getElementById("plus1").innerHTML = '<button id="plusBut1">PLUS</button>'
+        document.getElementById("plus2").innerHTML = '<button id="plusBut2">PLUS</button>'
+        document.getElementById("plus3").innerHTML = '<button id="plusBut3">PLUS</button>'
+        document.getElementById("plus4").innerHTML = '<button id="plusBut4">PLUS</button>'
+        document.getElementById("plus5").innerHTML = '<button id="plusBut5">PLUS</button>'
+        document.getElementById("plus6").innerHTML = '<button id="plusBut6">PLUS</button>'
+        document.getElementById("plus7").innerHTML = '<button id="plusBut7">PLUS</button>'
+
+
+
+        document.getElementById("plusBut1").addEventListener("click", (e) => {
+            document.getElementById("plus1").innerHTML  = '<td id="disc1" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof1" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud1" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+        document.getElementById("plusBut2").addEventListener("click", (e) => {
+            document.getElementById("plus2").innerHTML  = '<td id="disc2" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof2" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud2" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+        document.getElementById("plusBut3").addEventListener("click", (e) => {
+            document.getElementById("plus3").innerHTML = '<td id="disc3" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof3" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud3" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+        document.getElementById("plusBut4").addEventListener("click", (e) => {
+            document.getElementById("plus4").innerHTML  = '<td id="disc4" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof4" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud4" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+        document.getElementById("plusBut5").addEventListener("click", (e) => {
+            document.getElementById("plus5").innerHTML = '<td id="disc5" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof5" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud5" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+        document.getElementById("plusBut6").addEventListener("click", (e) => {
+            document.getElementById("plus6").innerHTML  = '<td id="disc6" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof6" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud6" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+        document.getElementById("plusBut7").addEventListener("click", (e) => {
+            document.getElementById("plus7").innerHTML  = '<td id="disc7" rowspan="2" ><input type="text" placeholder="Дисциплина"/></td>' +
+                '<td id="prof7" rowspan="2" ><input type="text" placeholder="Преподаватель"></td>' +
+                '<td id="aud7" rowspan="2" ><input type="text" placeholder="Аудитория"></td>'
+        })
+    }
+
+    function setDaySchedule(){
+        resetSchedule();
+        for(let i=0;i<jsonData.results.length;i++){
+            if(jsonData.results[i].day_of_week === weekDay){
+                if(jsonData.results[i].week_type === week_type || jsonData.results[i].week_type === "every"){
+                    switch(jsonData.results[i].time_slot.slot_number){
+                        case 1:
+                            document.getElementById("plus1").innerHTML = '<input id="disc1" type="text" placeholder="Дисциплина"/><input id="prof1" type="text" placeholder="Преподаватель"/><input id="aud1" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc1").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof1").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud1").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                        case 2:
+                            document.getElementById("plus2").innerHTML = '<input id="disc2" type="text" placeholder="Дисциплина"/><input id="prof2" type="text" placeholder="Преподаватель"/><input id="aud2" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc2").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof2").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud2").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                        case 3:
+                            document.getElementById("plus3").innerHTML = '<input id="disc3" type="text" placeholder="Дисциплина"/><input id="prof3" type="text" placeholder="Преподаватель"/><input id="aud3" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc3").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof3").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud3").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                        case 4:
+                            document.getElementById("plus4").innerHTML  = '<input id="disc4" type="text" placeholder="Дисциплина"/><input id="prof4" type="text" placeholder="Преподаватель"/><input id="aud4" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc4").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof4").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud4").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                        case 5:
+                            document.getElementById("plus5").innerHTML  = '<input id="disc5" type="text" placeholder="Дисциплина"/><input id="prof5" type="text" placeholder="Преподаватель"/><input id="aud5" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc5").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof5").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud5").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                        case 6:
+                            document.getElementById("plus6").innerHTML = '<input id="disc6" type="text" placeholder="Дисциплина"/><input id="prof6" type="text" placeholder="Преподаватель"/><input id="aud6" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc6").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof6").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud6").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                        case 7:
+                            document.getElementById("plus7").innerHTML = '<input id="disc7" type="text" placeholder="Дисциплина"/><input id="prof7" type="text" placeholder="Преподаватель"/><input id="aud7" type="text" placeholder="Аудитория"/>'
+
+                            document.getElementById("disc7").value = jsonData.results[i].subject.name;
+                            document.getElementById("prof7").value  = jsonData.results[i].teacher.full_name;
+                            document.getElementById("aud7").value  = jsonData.results[i].classroom.display_name;
+                            break;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    document.getElementById("date").addEventListener("input", (e) => {
+        subres = (document.getElementById("date").valueAsDate.getDate() - mainDate.getDate())
+        subres = Math.abs(subres);
+        if(((subres - subres % 7) / 7) % 2 === 0){
+            document.getElementById("weekUpDowm").textContent = "Вы на верхней неделе";
+            week_type = "odd"
+        }
+        else{
+            document.getElementById("weekUpDowm").textContent = "Вы на нижней неделе";
+            week_type = "even"
+        }
+    })
+
+
+
+
+
+    document.getElementById("date").addEventListener("change", (e) => {
+
+        var wdate = document.getElementById("date").valueAsDate.getDay();
+
+        weekDay = wdate;
+
+        if(wdate === 0){
+            document.getElementById("mon").checked = true;
+            setDayForWeekDay(-1);
+        }
+        if(wdate === 1){
+            document.getElementById("tue").checked = true;
+            setDayForWeekDay(0);
+        }
+        if(wdate === 2){
+            document.getElementById("wed").checked = true;
+            setDayForWeekDay(1);
+        }
+        if(wdate === 3){
+            document.getElementById("thu").checked = true;
+            setDayForWeekDay(2);
+        }
+        if(wdate === 4){
+            document.getElementById("fri").checked = true;
+            setDayForWeekDay(3);
+        }
+        if(wdate === 5){
+            document.getElementById("sat").checked = true;
+            setDayForWeekDay(4);
+        }
+        if(wdate === 6) {
+            document.getElementById("sun").checked = true;
+            setDayForWeekDay(5);
+        }
+    })
+
+    function setDayForWeekDay(n){
+        var fulldate = document.getElementById("date").valueAsDate;
+        fulldate.setDate(fulldate.getDate()-n);
+        document.getElementById("mond").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+        document.getElementById("tued").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+        document.getElementById("wedd").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+        document.getElementById("thud").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+        document.getElementById("frid").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+        document.getElementById("satd").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+        document.getElementById("sund").textContent = fulldate.getDate();
+        fulldate.setDate(fulldate.getDate()+1);
+    }
+
+    document.getElementById("mon").addEventListener("click", function(){
+        jsonDay = jsonData["mon"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(0);
+    })
+
+    document.getElementById("tue").addEventListener("click", function(){
+        jsonDay = jsonData["tue"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(1);
+    })
+
+    document.getElementById("wed").addEventListener("click", function(){
+        jsonDay = jsonData["wed"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(2)
+    })
+
+    document.getElementById("thu").addEventListener("click", function(){
+        jsonDay = jsonData["thu"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(3);
+    })
+
+    document.getElementById("fri").addEventListener("click", function(){
+        jsonDay = jsonData["fri"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(4);
+    })
+
+    document.getElementById("sat").addEventListener("click", function(){
+        jsonDay = jsonData["sat"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(5);
+    })
+
+    document.getElementById("sun").addEventListener("click", function(){
+        jsonDay = jsonData["sun"];
+        setDaySchedule(jsonDay);
+        setDateForWeekDay(6);
+    })
+
+    function setDateForWeekDay(n){
+        var date = document.getElementById("date").valueAsDate;
+        date.setDate(date.getDate()+n-weekDay);
+        document.getElementById("date").valueAsDate = date;
+        weekDay = n;
+    }
+
+</script>
+</html>

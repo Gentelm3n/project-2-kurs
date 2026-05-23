@@ -1,0 +1,27 @@
+{
+"expo": {
+"name": "ScheduleApp",
+"slug": "schedule-app",
+"version": "1.0.0",
+"scheme": "schedule-app",
+"updates": {
+"enabled": false
+},
+"android": {
+"package": "com.yourname.schedule",
+"permissions": [
+"INTERNET"
+],
+"usesCleartextTraffic": true
+},
+"extra": {
+"eas": {
+"projectId": "2ab29899-c539-44b4-9cfe-18e23b55eca0"
+}
+},
+"plugins": [
+"expo-router",
+"expo-web-browser"
+]
+}
+}

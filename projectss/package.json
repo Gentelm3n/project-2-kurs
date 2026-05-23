@@ -1,0 +1,16 @@
+{
+  "name": "projectss",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "electron" : "electron ."
+  },
+  "devDependencies": {
+    "electron": "^40.1.0"
+  }
+}

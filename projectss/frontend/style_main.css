@@ -1,0 +1,213 @@
+/* Общие */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #f2f4f7;
+    color: #1f2933;
+}
+table {
+    border-collapse: collapse;
+}
+button,
+select,
+input {
+    font-family: inherit;
+}
+
+/* Верхняя панель (первая строка таблицы) */
+body > table > tbody > tr:first-child {
+    background: #4a73f0; 
+    color: #ffffff;
+    border-bottom: none;
+}
+
+/* Сброс стилей для ячеек внутри этой синей строки, чтобы они не влияли на вложенные элементы */
+body > table > tbody > tr:first-child > td {
+    border: none;
+    padding: 14px 16px;
+}
+
+#group {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    background: #fff;
+    color: #1f2933;
+}
+#group:focus {
+    border-color: #3b66e3;
+    box-shadow: 0 0 0 3px rgba(59, 102, 227, 0.25);
+}
+
+.week-days-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.week-days-container p {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+td[colspan="2"][valign="top"] {
+    width: 280px;
+}
+#inst {
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+#date {
+    margin: 10px 0 16px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    background: #f8fafc;
+    outline: none;
+}
+#date:focus {
+    border-color: #9ca3af;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.15);
+}
+#weekUpDowm {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+
+td[colspan="2"][valign="top"] {
+    padding: 18px;
+}
+td[colspan="2"][valign="top"] > * {
+    max-width: 260px;
+}
+td[colspan="2"][valign="top"] > div,
+td[colspan="2"][valign="top"] > p,
+td[colspan="2"][valign="top"] > strong,
+td[colspan="2"][valign="top"] > input,
+td[colspan="2"][valign="top"] > button,
+td[colspan="2"][valign="top"] > label {
+    display: block;
+}
+td[colspan="2"][valign="top"] {
+    background: #f7f9fc;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+#submit {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    color: #1f2933;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+#submit:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+#submit:active {
+    transform: translateY(1px);
+}
+
+
+td[colspan="3"] {
+    padding: 16px 20px 24px;
+}
+td[colspan="3"] > table {
+    width: 100%;
+}
+td[colspan="3"] thead td {
+    font-weight: 700;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #4b5563;
+    background: transparent;
+}
+td[colspan="3"] tr {
+    background: #fff;
+}
+td[colspan="3"] tr + tr {
+    border-top: 1px solid #e5e7eb;
+}
+td[colspan="3"] td {
+    padding: 14px 12px;
+    font-size: 15px;
+    border: 1px solid #dfe3e8;
+}
+td[rowspan="2"] strong {
+    font-size: 16px;
+}
+
+
+td[colspan="3"][rowspan="2"] {
+    border-radius: 14px;
+    background: #fafafa;
+}
+
+
+[id^="plusBut"] {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px dashed #9ca3af;
+    background: #f9fafb;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+[id^="plusBut"]:hover {
+    border-color: #6b7280;
+    color: #1f2933;
+    background: #e5e7eb;
+}
+
+
+td[id^="disc"], td[id^="prof"], td[id^="aud"] input {
+    width: 100%;
+}
+td[id^="disc"], td[id^="prof"], td[id^="aud"] input {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 8px 10px;
+    outline: none;
+    background: #fff;
+}
+td[id^="disc"], td[id^="prof"], td[id^="aud"] input:focus {
+    border-color: #9ca3af;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.15);
+}
+
+
+@media (max-width: 1024px) {
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+    td[colspan="2"][valign="top"] {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
